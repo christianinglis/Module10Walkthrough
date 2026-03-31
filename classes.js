@@ -14,7 +14,7 @@ class Scene {
 
     setChildren(children)
     {
-        this.children = children
+        this.children = children;
     }
 
     renderScene()
@@ -22,12 +22,12 @@ class Scene {
         image.src = this.image_path;
         text1.innerText = this.text1;
         text2.innerText = this.text2;
+        buttonsDiv.ineerHTML = ""
         for (let i = 0; i < this.children.length; i++)
         {
             let newButton = document.createElement('button');
             newButton.innerText = "Option " + (i+1);
-            newButton.addEventListener('click', this.children[i].renderScene);
-            buttonsDiv.appendChild(newButton);
+            newButton.addEventListener('click', () => {buttonsDiv.innerHTML = ""; this.children[i].renderScene()});            buttonsDiv.appendChild(newButton);
         }
     }
 }
@@ -42,7 +42,8 @@ let sceneB = new Scene("bombardino.jpg",
     "This is bombardino crocodillo",
     "BOMBARDOOOO!");
 
-introScene.renderScene([sceneA, sceneB]);
+introScene.setChildren([sceneA, sceneB]);
 sceneA.setChildren([introScene]);
+sceneB.setChildren([sceneA, introScene]);
 
 introScene.renderScene();
