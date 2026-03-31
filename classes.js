@@ -41,7 +41,7 @@ class Scene {
 }
 
 class MusicScene extends Scene {
-    constructor(image_path, text1, text2)
+    constructor(image_path, text1, text2, audio_path)
     {
         super(image_path, text1, text2);
         this.audio_path = audio_path;
