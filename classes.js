@@ -49,7 +49,7 @@ class MusicScene extends Scene {
 
     renderScene() {
         super.renderScene();
-        music = new Audio(this.audio_path);
+        music.src = this.audio_path;
         music.play();
     }
     exitScene()
